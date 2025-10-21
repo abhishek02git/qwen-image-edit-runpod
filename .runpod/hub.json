@@ -22,6 +22,10 @@
         }
       },
       {
+        "key": "HF_HUB_CACHE",
+        "value": "/cache/huggingface"
+      },
+      {
         "key": "PRECISION",
         "input": {
           "name": "Model precision",
