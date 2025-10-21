@@ -1,0 +1,48 @@
+{
+  "title": "Qwen Image Edit",
+  "description": "A Runpod serverless deployment for Qwen/Qwen-Image-Edit-2509 to edit images based on text prompts.",
+  "type": "serverless",
+  "category": "image",
+  "iconUrl": "https://huggingface.co/front/thumbnails/qwen.png",
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 20,
+    "gpuCount": 1,
+    "gpuIds": "RTX A4000,-NVIDIA RTX 4090",
+    "allowedCudaVersions": ["12.8", "12.7", "12.6", "12.5", "12.4", "12.3"],
+    "env": [
+      {
+        "key": "HF_MODEL",
+        "input": {
+          "type": "huggingface",
+          "name": "Hugging Face Model",
+          "description": "Model organization/name as listed on Hugging Face Hub",
+          "default": "Qwen/Qwen-Image-Edit-2509",
+          "required": true
+        }
+      },
+      {
+        "key": "PRECISION",
+        "input": {
+          "name": "Model precision",
+          "type": "string",
+          "description": "Precision for inference",
+          "options": [
+            {"label": "FP16", "value": "fp16"},
+            {"label": "FP32", "value": "fp32"}
+          ],
+          "default": "fp16"
+        }
+      }
+    ],
+    "presets": [
+      {
+        "name": "Standard",
+        "defaults": {
+          "HF_MODEL": "Qwen/Qwen-Image-Edit-2509",
+          "PRECISION": "fp16"
+        }
+      }
+    ]
+  }
+}
